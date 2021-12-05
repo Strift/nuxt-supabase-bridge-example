@@ -9,11 +9,14 @@ module.exports = {
     requireConfigFile: false
   },
   extends: [
+    'standard',
     '@nuxtjs',
     'plugin:nuxt/recommended'
   ],
   plugins: [
   ],
   // add your custom rules here
-  rules: {}
+  rules: {
+    'no-undef': 1
+  }
 }

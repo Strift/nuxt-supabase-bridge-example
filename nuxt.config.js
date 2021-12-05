@@ -16,6 +16,11 @@ export default {
     ]
   },
 
+  publicRuntimeConfig: {
+    supabaseUrl: process.env.SUPABASE_URL,
+    supabaseKey: process.env.SUPABASE_KEY
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
@@ -35,9 +40,16 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    ['~/modules/supabase']
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  supabase: {
+    supabaseUrl: process.env.SUPABASE_URL,
+    supabaseKey: process.env.SUPABASE_KEY,
+    supabaseOptions: {}
   }
 }
