@@ -1,4 +1,6 @@
-export default {
+import { defineNuxtConfig } from '@nuxt/bridge'
+
+export default defineNuxtConfig({
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'tutorial-nuxt2-supabase',
@@ -40,16 +42,16 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    ['~/modules/supabase']
+    // ['~/modules/supabase']
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  },
-
-  supabase: {
-    supabaseUrl: process.env.SUPABASE_URL,
-    supabaseKey: process.env.SUPABASE_KEY,
-    supabaseOptions: {}
   }
-}
+
+  // supabase: {
+  //   supabaseUrl: process.env.SUPABASE_URL,
+  //   supabaseKey: process.env.SUPABASE_KEY,
+  //   supabaseOptions: {}
+  // }
+})
