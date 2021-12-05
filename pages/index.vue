@@ -1,5 +1,10 @@
 <template>
   <div>
+    <input v-model="email" type="email">
+    <input v-model="password" type="password">
+    <button @click="signUp">
+      Sign Up
+    </button>
     <button @click="signIn">
       Sign In
     </button>
@@ -9,8 +14,8 @@
 <script>
 export default {
   data: () => ({
-    email: 'lau.cazanove@gmail.com',
-    password: 'example-password'
+    email: 'example@domain.com',
+    password: ''
   }),
   mounted () {
     this.$supabase.auth.onAuthStateChange(async (event, session) => {
@@ -32,9 +37,7 @@ export default {
         email: this.email,
         password: this.password
       })
-      console.log(user)
-      console.log(session)
-      console.log(error)
+      console.log(user, session, error)
     },
     async signIn () {
       console.log('Sign In')
@@ -42,9 +45,7 @@ export default {
         email: this.email,
         password: this.password
       })
-      console.log(user)
-      console.log(session)
-      console.log(error)
+      console.log(user, session, error)
     }
   }
 }

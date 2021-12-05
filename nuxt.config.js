@@ -42,16 +42,16 @@ export default defineNuxtConfig({
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // ['~/modules/supabase']
+    ['~/modules/supabase']
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+  },
 
-  // supabase: {
-  //   supabaseUrl: process.env.SUPABASE_URL,
-  //   supabaseKey: process.env.SUPABASE_KEY,
-  //   supabaseOptions: {}
-  // }
+  supabase: {
+    supabaseUrl: process.env.SUPABASE_URL,
+    supabaseKey: process.env.SUPABASE_KEY,
+    supabaseOptions: {}
+  }
 })
