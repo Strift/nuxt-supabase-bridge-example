@@ -8,44 +8,43 @@
     <button @click="signIn">
       Sign In
     </button>
+    <button @click="signOut">
+      Sign Out
+    </button>
+    <div>Composition API</div>
+    <CompositionApiExample />
+    <div>Options API</div>
+    <OptionsApiExample />
   </div>
 </template>
 
 <script>
 export default {
   data: () => ({
-    email: 'example@domain.com',
-    password: ''
+    email: '',
+    password: 'example-password'
   }),
   mounted () {
-    this.$supabase.auth.onAuthStateChange(async (event, session) => {
-      console.log('Setting server session')
-      const response = await fetch('/api/auth/set-auth-cookie', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ event, session })
-      })
-      console.log(response)
-    })
+    this.email = this.$config.defaultEmail
   },
   methods: {
     async signUp () {
       console.log('Sign Up')
-      const { user, session, error } = await this.$supabase.auth.signUp({
+      await this.$supabase.auth.signUp({
         email: this.email,
         password: this.password
       })
-      console.log(user, session, error)
     },
     async signIn () {
       console.log('Sign In')
-      const { user, session, error } = await this.$supabase.auth.signIn({
+      await this.$supabase.auth.signIn({
         email: this.email,
         password: this.password
       })
-      console.log(user, session, error)
+    },
+    async signOut () {
+      console.log('Sign Out')
+      await this.$supabase.auth.signOut()
     }
   }
 }

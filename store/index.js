@@ -1,14 +1,26 @@
 import cookie from 'cookie'
 
 export const state = () => ({
-
+  user: null
 })
 
+export const mutations = {
+  setUser (state, user) {
+    console.log('onAuthStateChangeMutation')
+    state.user = user
+  }
+}
+
 export const actions = {
-  nuxtServerInit (ctx, { req, $supabase }) {
+  async nuxtServerInit ({ commit }, { req, $supabase }) {
     if (req.headers.cookie) {
-      const cookies = cookie.parse(req.headers.cookie)
-      console.log(cookies)
+      // GoTrueApi needs `req.cookies` to be set
+      req.cookies = cookie.parse(req.headers.cookie)
+      const { user } = await $supabase.auth.api.getUserByCookie(req)
+      commit('setUser', user)
     }
+  },
+  onAuthStateChange (_ctx, user) {
+    console.log('onAuthStateChangeAction')
   }
 }

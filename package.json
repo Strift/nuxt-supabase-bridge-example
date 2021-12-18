@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "nuxi dev",
+    "dev:symlinks": "node --preserve-symlinks ./node_modules/nuxi/bin/nuxi.mjs dev",
     "build": "nuxi build",
     "start": "node .output/server/index.mjs",
     "generate": "nuxi generate",
@@ -11,11 +12,12 @@
     "lint": "yarn lint:js"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^1.28.0",
+    "@nuxtjs/ngrok": "^2.0.0",
     "cookie": "^0.4.1",
     "core-js": "^3.15.1",
     "express": "^4.17.1",
-    "nuxt-edge": "latest"
+    "nuxt-edge": "latest",
+    "nuxt-supabase": "link:/home/strift/Code/OpenSource/nuxt-supabase"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
